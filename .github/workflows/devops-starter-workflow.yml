@@ -13,6 +13,7 @@ env:
   HOSTINGPLANNAME: "BearBig-AzureTest-plan"
   APPINSIGHTLOCATION: "South Central US"
   SKU: "S1 Standard"
+  SONAR_HOST_URL: "http://http://20.249.87.78"
 
 jobs:
   Build:
@@ -35,6 +36,13 @@ jobs:
         mkdir testresults
         pip install pytest && pytest Tests/unit_tests --junitxml=./testresults/test-results.xml && pip install pycmd && py.cleanup Tests/
 
+    - uses: actions/checkout@v3
+      with: 
+        fetch-depth: 0
+    - uses: sonarsource/sonarqube-scan-action@master
+      env: 
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    
     # Uploading unit test results to artifact store
     - name: Upload unit test results to Artifact
       continue-on-error: false
