@@ -38,10 +38,42 @@ class BmiCalculatorTest(TestCase):
         self.assertEqual(bmi, 21.48)
         self.assertEqual(bmi_means, '健康體位')
 
-    def test_bmi_result_2(self):
+    def test_bmi_result_heavy(self):
         """Tests bmi result."""
         height = 1.77
         weight = 77
         bmi, bmi_means = bmi_calculator(height, weight)
         self.assertEqual(bmi, 24.58)
         self.assertEqual(bmi_means, '過重')
+    
+    def test_bmi_result_light_heavy(self):
+        """Tests bmi result."""
+        height = 1.77
+        weight = 90
+        bmi, bmi_means = bmi_calculator(height, weight)
+        self.assertEqual(bmi, 28.73)
+        self.assertEqual(bmi_means, '輕度肥胖')
+    
+    def test_bmi_result_middle_heavy(self):
+        """Tests bmi result."""
+        height = 1.77
+        weight = 100
+        bmi, bmi_means = bmi_calculator(height, weight)
+        self.assertEqual(bmi, 31.92)
+        self.assertEqual(bmi_means, '中度肥胖')
+
+    def test_bmi_result_high_heavy(self):
+        """Tests bmi result."""
+        height = 1.77
+        weight = 110
+        bmi, bmi_means = bmi_calculator(height, weight)
+        self.assertEqual(bmi, 35.11)
+        self.assertEqual(bmi_means, '重度肥胖')
+    
+    def test_bmi_result_thin(self):
+        """Tests bmi result."""
+        height = 1.77
+        weight = 54
+        bmi, bmi_means = bmi_calculator(height, weight)
+        self.assertEqual(bmi, 17.24)
+        self.assertEqual(bmi_means, '過輕')
