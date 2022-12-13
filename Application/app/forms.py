@@ -26,3 +26,5 @@ class BmiForm(forms.Form):
         label='請輸入體重(kg)', 
         widget=forms.TextInput(attrs={'class':'form-control'}),
         error_messages={'required': '請輸入體重'})
+    
+    def 
